@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css?family=Lily+Script+One|Cabin|Varela+Round');
+@import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Press+Start+2P&display=swap');
+
+body {
+	transform: translateY(80px);
+	background: #223953;
+	text-align: center;
+}
+
+a {
+	color: #223953;
+	transition: opacity linear 0.3s;
+}
+
+a:hover {
+	opacity: 0.8;
+	color: #223953;	
+}
+
+#about, #skills, #projects, #contact {
+	display: none;
+}
+
+
+.title {
+	 font-family: 'Press Start 2P', cursive;
+     font-size: 3em;
+     margin: 20px 0px;
+	 color: #ff0000;
+}
+
+#profile img {
+	margin: 0px auto;
+	display: block;	
+	border: solid 8px #ffee07;
+}
+
+#home p {
+	font-family: 'East Sea Dokdo', cursive;
+	font-size: 30px;
+	color: #17D714;
+	transition: opacity linear 0.3s;
+}
+
+#skills i {
+
+	font-size: 40px;
+	margin: 10px 4px;
+}
+
+#projects ul li {
+	font-family: 'East Sea Dokdo', cursive;
+	font-size: 25px;
+}
+
+ul {
+	list-style: none;
+}
+
+ul li {
+	color: #ECEFF1;
+	background-color: #223953;;
+	font-size: 15px;
+	font-family: 'Varela Round';
+	display: inline-block;
+	margin: 5px 5px;
+	border:  solid 2px #223953;;
+	border-radius: 18px;
+	padding: 10px 10px;
+}
+
+#contact ul li {
+	border-radius: 15px;
+	padding: 10px 23px;
+}
+
+#contact .fa {
+	font-size: 18px;
+}
+
+
+#navigate {
+	margin: 10px 0;
+}
+
+#navigate .fa {
+	font-size: 20px;
+	border: solid 1px #ff0000;
+	padding: 15px 30px;
+	margin: 0px 5px;
+	color: #ff0000;
+	transition: opacity linear 0.3s;
+	border-radius: 10px;
+}
+
+#navigate .fa:hover {
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+.fa-java {
+	color: #f89820;
+}
+
+.fa-python {
+	color: #4b8bbe;
+}
+
+.icon-git {
+	color: #F44336;
+}
+
+.icon-html5 {
+	color: #EF6C00;
+}
+
+.devicon-linux-plain {
+	color: #000000;
+}
+
+.icon-apache {
+	color: #b80046;
+}
+
+.devicon-gradle-plain {
+	color: #005c3d;
+}
+
+.icon-mysql-alt {
+	color: #00758f
+}
+
+.icon-heroku {
+	color: #7673C0
+}
+
+.devicon-github-original {
+	color: #ffffff;
+}
+
+.devicon-pandas-original {
+	color: #ffffff;
+}
+#jbudget li {
+	background: #512DA8;
+	border-color: #512DA8;
+}
+
+#openai-gym li {
+	background: #EF6C00;
+	border-color: #EF6C00;
+}
+
+#mlbengage li{
+	background: #33ade6;
+	border-color: #33ade6;
+}
+
+#calcettobot li {
+	background: #33691E;
+	border-color: #33691E;
+}
+
+#telemetry li {
+	background: #721b15;
+	border-color: #721b15;
+}
+
+#more li {
+	background: #8b8b53;
+	border-color: #8b8b53;
+}
+
+#mailto li {
+	background: #E53935;
+	border-color: #E53935;
+}
+
+
+#codepen li {
+	background: #231F20;
+	border-color: #231F20;
+}
+
+#linkedin li {
+	background: #007BB6;
+	border-color: #007BB6;
+}
+
+#quora li {
+	background: #B92B27;
+	border-color: #B92B27;
+}
+
+#twitter li {
+	background: #ffffff;
+	border-color: #ffffff;
+}
+
+#telegram li {
+	background: #007BB6;
+	border-color: #007BB6;
+}

@@ -3,7 +3,7 @@
 
 body {
 	transform: translateY(80px);
-	background: #223953;
+	background: #000000;
 	text-align: center;
 }
 
@@ -32,7 +32,7 @@ a:hover {
 #profile img {
 	margin: 0px auto;
 	display: block;	
-	border: solid 8px #ffee07;
+	border: solid 4px #ffee07;
 }
 
 #home p {
@@ -115,7 +115,7 @@ ul li {
 }
 
 .devicon-linux-plain {
-	color: #000000;
+	color: #ffffff;
 }
 
 .icon-apache {

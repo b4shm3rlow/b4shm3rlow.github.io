@@ -113,7 +113,9 @@ a.btn:hover {
 }
 
 .header {
-    background-image: url(../img/22.jpg);
+    background-image: url(../img/2834367.png);
+    background-attachment: fixed;
+    background-repeat: repeat;
     background-size: 100%;
     color: #fff;
 }

@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="TODO">
+    <meta name="description" content="What is an High Avaibility Cluster?A high-reliability cluster is a collection of nodes interconnected with each other and capable of being distributed the workload autonomously and capable of guarante">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Build a simple High Availability Cluster">
 <meta property="og:url" content="https://b4shm3rlow.github.io/computing-systems/hpc-cha/index.html">
 <meta property="og:site_name" content="b4shm3rlow">
-<meta property="og:description" content="TODO">
+<meta property="og:description" content="What is an High Avaibility Cluster?A high-reliability cluster is a collection of nodes interconnected with each other and capable of being distributed the workload autonomously and capable of guarante">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-09-10T16:52:31.000Z">
-<meta property="article:modified_time" content="2022-09-20T17:22:42.714Z">
+<meta property="article:published_time" content="2021-12-10T17:52:31.000Z">
+<meta property="article:modified_time" content="2022-09-29T11:53:34.118Z">
 <meta property="article:author" content="Ludovico Guercio">
 <meta property="article:tag" content="cluster">
 <meta property="article:tag" content="availability">
@@ -89,8 +89,6 @@
         <li><a class="icon" aria-label="Previous post" href="/computing-systems/hpc-htc/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" aria-label="Next post" href="/uncategorized/hello-world/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
         <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
@@ -110,7 +108,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TODO"><span class="toc-number">1.</span> <span class="toc-text">TODO</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-an-High-Avaibility-Cluster"><span class="toc-number">1.</span> <span class="toc-text">What is an High Avaibility Cluster?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#When-this-system-is-useful"><span class="toc-number">2.</span> <span class="toc-text">When this system is useful?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tools-and-Software"><span class="toc-number">3.</span> <span class="toc-text">Tools and Software</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Machine%E2%80%99s-Configuration"><span class="toc-number">4.</span> <span class="toc-text">Machine’s Configuration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tools-Installation"><span class="toc-number">5.</span> <span class="toc-text">Tools Installation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pacemaker-amp-Corosync-Configuration"><span class="toc-number">6.</span> <span class="toc-text">Pacemaker &amp; Corosync Configuration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cluster-Configuration"><span class="toc-number">7.</span> <span class="toc-text">Cluster Configuration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Web-service"><span class="toc-number">8.</span> <span class="toc-text">Web service</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DRBD-Configuration"><span class="toc-number">9.</span> <span class="toc-text">DRBD Configuration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DRBD-Resource-Configuration"><span class="toc-number">10.</span> <span class="toc-text">DRBD Resource Configuration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Testing"><span class="toc-number">11.</span> <span class="toc-text">Testing</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -134,7 +132,7 @@
       
     <div class="postdate">
       
-        <time datetime="2022-09-10T16:52:31.000Z" itemprop="datePublished">2022-09-10</time>
+        <time datetime="2021-12-10T17:52:31.000Z" itemprop="datePublished">2021-12-10</time>
         
       
     </div>
@@ -159,7 +157,89 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h1>
+    <h2 id="What-is-an-High-Avaibility-Cluster"><a href="#What-is-an-High-Avaibility-Cluster" class="headerlink" title="What is an High Avaibility Cluster?"></a>What is an High Avaibility Cluster?</h2><p>A high-reliability cluster is a collection of nodes interconnected with each other and capable of being distributed the workload autonomously and capable of guarantee the supply services in case one or more nodes go offline.<br>The resistance to faults must be guaranteed by presence of several nodes with the same content information, for example the public folder of web content (usually in &#x2F; var &#x2F; www &#x2F; html), in able to take over in the delivery of html content as soon as a node “active” present a connection problem.</p>
+<h2 id="When-this-system-is-useful"><a href="#When-this-system-is-useful" class="headerlink" title="When this system is useful?"></a>When this system is useful?</h2><p>The system is ufesuful for different possible situation, some cases are fault tolerance, redundancy of the equipment, blackout affecting some nodes of the cluster, excessive workloads for one machine.</p>
+<h2 id="Tools-and-Software"><a href="#Tools-and-Software" class="headerlink" title="Tools and Software"></a>Tools and Software</h2><p>For the realization of the cluster we need some important tools and software. Our cluster will work for Unix-like enviroment.</p>
+<p>LinuxHA provide us tools and software for the solution:</p>
+<ul>
+<li>Pacemark , work as Cluster Resource Manager</li>
+<li>Corosync , work as Cluster Engine</li>
+<li>DRBD , for create and replicate resource on all node</li>
+</ul>
+<h2 id="Machine’s-Configuration"><a href="#Machine’s-Configuration" class="headerlink" title="Machine’s Configuration"></a>Machine’s Configuration</h2><p>The implementation of the cluster is “semplified” and it will be implemented with VirtualBox. The cluster is formed by two node with the same configuration:</p>
+<ul>
+<li>Image disk: Fedora Server</li>
+<li>Memory: 20 GB</li>
+<li>Shared Memory: 1 GB</li>
+<li>RAM: 2 GB</li>
+<li>Core: 1</li>
+<li>Network: type Bridge</li>
+</ul>
+<p>For create two identical node, use the VirtualBox command “Clone”.</p>
+<p>Starting the machines for the first time, you proceed with the installation of Fedora Server. In the installation menu it is important to set the destination disk for the system operating. Still in the installation menu, the user setting is disabled: therefore proceed to configure the root user. Subsequently, again through the menu, you can create other users: this step was done later in the second boot via the command. Once the root user is set, continue with the installation (it may require a bit of time). At the end of the process, Fedora is finally installed on the machines: so reboot and you are ready to work with the two machines.</p>
+<p>Once the machine has restarted, log in with the root user; now create a new user in both machines via the following commands:</p>
+<p>For the Machine 1:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ useradd nodo1</span><br><span class="line">$ passwd nodo1</span><br><span class="line">$ usermod −aG wheel nodo1</span><br></pre></td></tr></table></figure>
+<p>For the Machine 2:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ useradd nodo2</span><br><span class="line">$ passwd nodo2</span><br><span class="line">$ usermod −aG wheel nodo2</span><br></pre></td></tr></table></figure>
+
+<p>Before to procede the packages installation, it’s important to update the machines:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo dnf upgrade</span><br></pre></td></tr></table></figure>
+<p>We can install some fondamentals packages:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo dnf install net-tools</span><br><span class="line">$ sudo dnf install nano</span><br><span class="line">$ sudo dnf install vim</span><br></pre></td></tr></table></figure>
+
+<h2 id="Tools-Installation"><a href="#Tools-Installation" class="headerlink" title="Tools Installation"></a>Tools Installation</h2><p>Now the machines are ready for the installation of cluster software:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo dnf −y install pacemaker corosync pcs</span><br><span class="line">$ sudo dnf −y install drbd−pacemaker drbd−udev</span><br><span class="line">$ sudo dnf −y install httpd</span><br><span class="line">$ sudo dnf −y install iptables −services</span><br></pre></td></tr></table></figure>
+<p>To avoid any networks error between the nodes, is raccomended to set static IP. Also add the host name into the file locate in &#x2F;etc&#x2F;hosts: this is the file who is checked first when the DNS request occurs.<br>So for the node 1:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo nmcli connection modify enp0s3 IPv4.address 192.168.1.6/24</span><br><span class="line">$ sudo nmcli connection modify enp0s3 IPv4.gateway 192.168.1.</span><br><span class="line">$ sudo nmcli connection modify enp0s3 IPv4.dns 8.8.8.8</span><br><span class="line">$ sudo systemctl disable firewalld</span><br></pre></td></tr></table></figure>
+<p>For the node 2:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo nmcli connection modify enp0s3 IPv4.address 192.168.1.7/24</span><br><span class="line">sudo nmcli connection modify enp0s3 IPv4.gateway 192.168.1.</span><br><span class="line">sudo nmcli connection modify enp0s3 IPv4.dns 8.8.8.8</span><br><span class="line">sudo systemctl disable firewalld</span><br></pre></td></tr></table></figure>
+<p>In each machine add in &#x2F;etc&#x2F;hosts:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">192.168.1.6 node1</span><br><span class="line">192.168.1.7 node2</span><br></pre></td></tr></table></figure>
+<h2 id="Pacemaker-amp-Corosync-Configuration"><a href="#Pacemaker-amp-Corosync-Configuration" class="headerlink" title="Pacemaker &amp; Corosync Configuration"></a>Pacemaker &amp; Corosync Configuration</h2><p>For the node1 and node2, now it’s possibile to set up the cluster and start the Pacemaker:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable pcsd</span><br><span class="line">sudo systemctl start pcsd</span><br></pre></td></tr></table></figure>
+<p>Corosync allows to manage the comunication between nodes esuring a copy of the information inside the cluster.<br>Configuration is done inside the specific file corosync.conf (for all machine):</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">totem <span class="punctuation">&#123;</span></span><br><span class="line">    version<span class="punctuation">:</span> <span class="number">2</span></span><br><span class="line">    cluster_name<span class="punctuation">:</span> testCluster</span><br><span class="line">    transport<span class="punctuation">:</span> knet</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line">nodelist <span class="punctuation">&#123;</span></span><br><span class="line">    node <span class="punctuation">&#123;</span></span><br><span class="line">        ring0_addr<span class="punctuation">:</span> node1</span><br><span class="line">        name<span class="punctuation">:</span> node1</span><br><span class="line">        nodeid<span class="punctuation">:</span> <span class="number">1</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">    node <span class="punctuation">&#123;</span></span><br><span class="line">        ring0_addr<span class="punctuation">:</span> node2</span><br><span class="line">        name<span class="punctuation">:</span> node2</span><br><span class="line">        nodeid<span class="punctuation">:</span> <span class="number">2</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line">quorum <span class="punctuation">&#123;</span></span><br><span class="line">    provider<span class="punctuation">:</span> corosync_votequorum</span><br><span class="line">    two_node<span class="punctuation">:</span> <span class="number">1</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line">logging <span class="punctuation">&#123;</span></span><br><span class="line">    to_logfile<span class="punctuation">:</span> yes</span><br><span class="line">    logfile<span class="punctuation">:</span> /var/log/cluster/corosync.log</span><br><span class="line">    to_syslog<span class="punctuation">:</span> yes</span><br><span class="line">    timestamp<span class="punctuation">:</span> on</span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Cluster-Configuration"><a href="#Cluster-Configuration" class="headerlink" title="Cluster Configuration"></a>Cluster Configuration</h2><p>The configuration of Pacemaker and Corosync is done, now is possibile to start the cluster.<br>Before this, is need to login to each node of machine: by default settings, the username is hacluster.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo passwd hacluster</span><br><span class="line">$ sudo pcs client local -auth -u hacluster</span><br><span class="line">$ sudo pcs local -auth -u hacluster</span><br></pre></td></tr></table></figure>
+<p>Once authenticated in all machine, it’s fondamental pick the “Master Node”. In this example, i choose the machine 1 (the node1) and start the cluster with this node:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pcs cluster setup testCluster node1 node2 --force</span><br></pre></td></tr></table></figure>
+<p>The output of this command seems like this:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Sending &#x27;corosync.conf&#x27; to &#x27;node1&#x27;, &#x27;node2&#x27;</span><br><span class="line">node1: successful distribution of the file &#x27;corosync.conf&#x27;</span><br><span class="line">node2: successful distribution of the file &#x27;corosync.conf&#x27;</span><br><span class="line">Cluster has been successfully setup</span><br></pre></td></tr></table></figure>
+<p>For this implementation, make sure to disable the “stonith” functionality because we don’t have data incosistendy:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pcs property set stonith-enabled = false</span><br></pre></td></tr></table></figure>
+<h2 id="Web-service"><a href="#Web-service" class="headerlink" title="Web service"></a>Web service</h2><p>The implementation of this cluster include a simple web service for verification the full consistency of cluster vitaliy. It’s needed that the web resource is avaible and reachable from each nodes; at this point, we cosidering to configure a reachable floating ip for the cluster. Also, in this command, we need to specify the corosync file, a monitoring interval and a group name of nodes. Lastly add the web resource “httpd.conf” to cluster:<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pcs resource create floating_ip ocf:heartbeat:IPaddr2 ip=192.168.1.9 cidr_netmask=24 op monitor interval=30s --group groupNode</span><br><span class="line">$ sudo pcs resource create webServer ocf:heartbeat:apache  configfile=&quot;/etc/httpd/conf/httpd.conf&quot; op monitor timeout=&quot;15s&quot; interval=&quot;30s&quot; -group groupNode </span><br></pre></td></tr></table></figure><br>With this setup will have an always active web server altough we disable a node, for example the Master Node.</p>
+<h2 id="DRBD-Configuration"><a href="#DRBD-Configuration" class="headerlink" title="DRBD Configuration"></a>DRBD Configuration</h2><p>DRBD can replicate the resource in all nodes of the cluster, as in our implementation the web resource. It’s needed a real space in the machine for saving the resource, so we will use the 1 GB partition of disk spaces create in the itial phases. With the DRBD, if we have a “blackout” of the Master Node, the node 2 can read the resource from DRBD and can continue the work for the cluster as new Master Node.<br>The follow command allow to setup the partition:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo fdisk /dev/sdb</span><br></pre></td></tr></table></figure>
+<p>Also we have a sub-command to follow:</p>
+<ul>
+<li>p (for create aprimary partition)</li>
+<li>w (for confirm and write)</li>
+</ul>
+<p>For setting DRBD, popolate the resource file:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo nano /etc/drbd.d/&lt;filename&gt;.res</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">resource wwwdata &#123;</span><br><span class="line">    protocol C;</span><br><span class="line"></span><br><span class="line">    on node1 &#123;</span><br><span class="line">        device /dev/drbd0;</span><br><span class="line">        disk /dev/sdb1;</span><br><span class="line">        address 192.168.1.6:5555;</span><br><span class="line">        meta-disk internal;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    on node2 &#123;</span><br><span class="line">        device /dev/drbd0;</span><br><span class="line">        disk /dev/sdb1;</span><br><span class="line">        address 192.168.1.7:5555;</span><br><span class="line">        meta-disk internal;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>device &#x2F;dev&#x2F;drbd0 is the name of common DRBD for the two nodes</li>
+<li>disk &#x2F;dev&#x2F;sdb01 specific the local partion of the node</li>
+<li>address:port specific IP address and port</li>
+<li>meta-disk internat used for internal meta-data</li>
+</ul>
+<p>The same file will be create in the second machine: we can create the file and popolate it, otherwhise do a copy with de “scp” command:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ scp /etc/drbd.d/&lt;filename&gt;.res node2:/etc/drbd.d/</span><br></pre></td></tr></table></figure>
+<p>Next, for each machine, initialize the resources:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ drbdadm create -md wwwdata</span><br><span class="line">$ sudo modprobe drbd</span><br><span class="line">$ drbdadm up wwwdata</span><br><span class="line">$ drbdadm --overwrite-data-of-peer primary all</span><br><span class="line">$ drbdadm primary --force wwwdata</span><br></pre></td></tr></table></figure>
+<p>Finally the DRBD can start:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl enable drbd</span><br><span class="line">$ sudo systemctl start drbd</span><br></pre></td></tr></table></figure>
+<h2 id="DRBD-Resource-Configuration"><a href="#DRBD-Resource-Configuration" class="headerlink" title="DRBD Resource Configuration"></a>DRBD Resource Configuration</h2><p>At this moment, the cluster can already work, but for complete the configuration,  we need to format the partition of DRDB, do the mount of the volume and write the resource (for example a simple html page):</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mkfs.xfs  /dev/drbd0</span><br><span class="line">$ sudo mount /dev/drbd0 /mnt</span><br><span class="line">$ echo &quot;&lt;h1&gt; hello world &lt;h1&gt;&quot; | sudo tee /mnt/index.html</span><br><span class="line">sudo unmount /dev/drbd0</span><br></pre></td></tr></table></figure>
+<p>Next, add the final resource to the cluster:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pcs cluster cib drbd_cfg</span><br><span class="line">$ sudo pcs -f drbd_cfg resource create WebData ocf:linbit:drbd drbd_resource=wwwdata op monitor interval=30s</span><br><span class="line">$ sudo pcs -f drbd_cfg resource promotable WebData promote-max=1 promoted-node-max=1 clone-max=2 clone-node-max=2 notify=true</span><br><span class="line">$ sudo pcs cluster cib-push  drbd-cfg --config</span><br></pre></td></tr></table></figure>
+<p>For the replication in all node:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pcs cluster cib fs_cfg</span><br><span class="line">$ sudo pcs -f fs_cfg resource create WebFS Filesystem device=&quot;/dev/drbd0&quot; directory=&quot;/var/www/html&quot; fstype=&quot;xfs&quot;</span><br><span class="line">$ sudo pcs −f fs_cfg constraint colocation add WebFS with WebData−clone INFINITY with−rsc−role=Master</span><br><span class="line">$ sudo pcs -f fs_cfg constraint order promote WebData−clone then start WebFS</span><br><span class="line">$ sudo pcs -f fs_cfg constraint colocation add WebServer with WebFS INFINITY</span><br><span class="line">$ sudo pcs -f fs_cfg constraint order WebFS then WebServer</span><br><span class="line">$ sudo pcs cluster cib−push fs_cfg −−config</span><br></pre></td></tr></table></figure>
+<h2 id="Testing"><a href="#Testing" class="headerlink" title="Testing"></a>Testing</h2><p>Now the we can testing the cluster avaibility functionality: if disconnect the Node Master, and the second node hold on the webserver, the cluster works properly.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#check the services stutus</span><br><span class="line">$ sudo pcs status</span><br><span class="line"></span><br><span class="line">#for stop and restart a node</span><br><span class="line">sudo pcs node stanby &lt;nodename&gt;</span><br><span class="line">sudo pcs node unstanby &lt;nodename&gt;</span><br></pre></td></tr></table></figure>
+
   </div>
 </article>
 
@@ -184,7 +264,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TODO"><span class="toc-number">1.</span> <span class="toc-text">TODO</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-an-High-Avaibility-Cluster"><span class="toc-number">1.</span> <span class="toc-text">What is an High Avaibility Cluster?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#When-this-system-is-useful"><span class="toc-number">2.</span> <span class="toc-text">When this system is useful?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tools-and-Software"><span class="toc-number">3.</span> <span class="toc-text">Tools and Software</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Machine%E2%80%99s-Configuration"><span class="toc-number">4.</span> <span class="toc-text">Machine’s Configuration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tools-Installation"><span class="toc-number">5.</span> <span class="toc-text">Tools Installation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pacemaker-amp-Corosync-Configuration"><span class="toc-number">6.</span> <span class="toc-text">Pacemaker &amp; Corosync Configuration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cluster-Configuration"><span class="toc-number">7.</span> <span class="toc-text">Cluster Configuration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Web-service"><span class="toc-number">8.</span> <span class="toc-text">Web service</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DRBD-Configuration"><span class="toc-number">9.</span> <span class="toc-text">DRBD Configuration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DRBD-Resource-Configuration"><span class="toc-number">10.</span> <span class="toc-text">DRBD Resource Configuration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Testing"><span class="toc-number">11.</span> <span class="toc-text">Testing</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -221,7 +301,7 @@
       
       
         
-          <a class="icon" target="_blank" rel="noopener" href="http://github.com/b4shm3rlow" aria-label="github">
+          <a class="icon" target="_blank" rel="noopener" href="https://github.com/b4shm3rlow" aria-label="github">
             <i class="fab fa-github fa-lg"></i><!--
       ---></a><!--
     ---><!--
@@ -229,8 +309,16 @@
         
       
         
-          <a class="icon" target="_blank" rel="noopener" href="http://twitter.com/b4shm3rlow" aria-label="twitter">
+          <a class="icon" target="_blank" rel="noopener" href="https://twitter.com/b4shm3rlow" aria-label="twitter">
             <i class="fab fa-twitter fa-lg"></i><!--
+      ---></a><!--
+    ---><!--
+    --->  
+        
+      
+        
+          <a class="icon" target="_blank" rel="noopener" href="https://instagram.com/b4shm3rlow?igshid=YmMyMTA2M2Y=" aria-label="instagram">
+            <i class="fab fa-instagram fa-lg"></i><!--
       ---></a><!--
     ---><!--
     --->  

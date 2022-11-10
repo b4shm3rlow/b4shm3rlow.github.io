@@ -6,20 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="TODO">
+    <meta name="description" content="Cos’è il protocollo OAuth ? Come Funziona ?OAuth è un protocollo di rete per l’autorizzazione progettato per lavorare con http. Consiste nel rilascio di un token di accesso da parte di un server autor">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How work the authorization with OAuth">
+<meta property="og:title" content="How work the authorization with OAuth [ITA]">
 <meta property="og:url" content="https://b4shm3rlow.github.io/security/oauth/index.html">
 <meta property="og:site_name" content="b4shm3rlow">
-<meta property="og:description" content="TODO">
+<meta property="og:description" content="Cos’è il protocollo OAuth ? Come Funziona ?OAuth è un protocollo di rete per l’autorizzazione progettato per lavorare con http. Consiste nel rilascio di un token di accesso da parte di un server autor">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.ibb.co/m6C3C8q/authgrant.jpg">
 <meta property="article:published_time" content="2022-09-10T16:54:18.000Z">
-<meta property="article:modified_time" content="2022-09-20T17:22:31.359Z">
+<meta property="article:modified_time" content="2022-11-10T15:27:46.823Z">
 <meta property="article:author" content="Ludovico Guercio">
 <meta property="article:tag" content="authentication">
 <meta property="article:tag" content="authorization">
 <meta property="article:tag" content="sso">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.ibb.co/m6C3C8q/authgrant.jpg">
     
     
       
@@ -39,7 +41,7 @@
       
     
     <!-- title -->
-    <title>How work the authorization with OAuth</title>
+    <title>How work the authorization with OAuth [ITA]</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -88,7 +90,7 @@
       <ul>
         
         
-        <li><a class="icon" aria-label="Next post" href="/security/saml/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Next post" href="/computing-systems/hpc-htc/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -102,14 +104,14 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://b4shm3rlow.github.io/security/oauth/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://b4shm3rlow.github.io/security/oauth/&text=How work the authorization with OAuth"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://b4shm3rlow.github.io/security/oauth/&title=How work the authorization with OAuth"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://b4shm3rlow.github.io/security/oauth/&title=How work the authorization with OAuth"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://b4shm3rlow.github.io/security/oauth/&text=How work the authorization with OAuth [ITA]"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://b4shm3rlow.github.io/security/oauth/&title=How work the authorization with OAuth [ITA]"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://b4shm3rlow.github.io/security/oauth/&title=How work the authorization with OAuth [ITA]"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TODO"><span class="toc-number">1.</span> <span class="toc-text">TODO</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cos%E2%80%99e-il-protocollo-OAuth-Come-Funziona"><span class="toc-number">1.</span> <span class="toc-text">Cos’è il protocollo OAuth ? Come Funziona ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OAuth-1-0"><span class="toc-number">2.</span> <span class="toc-text">OAuth 1.0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OAuth-2-0-Attuale"><span class="toc-number">3.</span> <span class="toc-text">OAuth 2.0 (Attuale)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Attori-in-OAuth"><span class="toc-number">4.</span> <span class="toc-text">Attori in OAuth</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tokens-in-OAuth"><span class="toc-number">5.</span> <span class="toc-text">Tokens in OAuth</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Come-vengono-gestite-le-autorizzazioni"><span class="toc-number">6.</span> <span class="toc-text">Come vengono gestite le autorizzazioni ?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tipi-di-Authorization-Grant"><span class="toc-number">6.1.</span> <span class="toc-text">Tipi di Authorization Grant:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Authorization-Code-Grant"><span class="toc-number">7.</span> <span class="toc-text">Authorization Code Grant</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PKCE-come-avviene-questa-verifica"><span class="toc-number">7.1.</span> <span class="toc-text">PKCE: come avviene questa verifica?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gli-altri-tipi-di-autorizzazione"><span class="toc-number">8.</span> <span class="toc-text">Gli altri tipi di autorizzazione</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -121,7 +123,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        How work the authorization with OAuth
+        How work the authorization with OAuth [ITA]
     </h1>
 
 
@@ -158,7 +160,47 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h1>
+    <h2 id="Cos’e-il-protocollo-OAuth-Come-Funziona"><a href="#Cos’e-il-protocollo-OAuth-Come-Funziona" class="headerlink" title="Cos’è il protocollo OAuth ? Come Funziona ?"></a>Cos’è il protocollo OAuth ? Come Funziona ?</h2><p>OAuth è un protocollo di rete per l’autorizzazione progettato per lavorare con http. Consiste nel rilascio di un token di accesso da parte di un server autorizzativo ad un client di terze parti, previa approvazione dell’utente proprietario della risorsa cui si intende accedere. Tutto ciò entra in auto per le app moderne che sono progettate interno alle API. Le API forniscono accesso ai dati o servizi di applicazione o servizio.<br>In passato un utente doveva condividere le credenziali con l’applicazione per abilitare le chiamate API: ciò porta una quantità di accesso non necessaria e non salvaguardando la protezione dei dati di accesso.<br>Il protocollo fornisce oggigiorno una soluzione migliore per app e chiamate API. Infatti possiamo definirlo come un sistema di “accesso delegato”. Comunemente utilizzato come modalità per gli utenti nell’Internet per garantire alle applicazioni e siti web, l’accesso alle proprie informazioni senza fornire loro alcune password e credenziali.</p>
+<h2 id="OAuth-1-0"><a href="#OAuth-1-0" class="headerlink" title="OAuth 1.0"></a>OAuth 1.0</h2><p>OAuth 1.0 è stata la prima versione del protocollo, ideato per autorizzare terze parti a gestire documenti privati senza condivisione di password, garantendo così l’accesso delegato ad un client specifico per determinare risorse e per un tempo limitato.<br>Il protocollo attualmente è stato “upgradato” perchè presentava falle di sicurezza a livello di confidenzialità: sebbene garantiva che il client non accedesse ad informazioni indisiderate, non garantiva che l’uso di risorse autorizzate rimanessero nell’ambito specifico. Infatti, OAuth suggeriva al server di proteggersi con il protocollo TLS. Per le integrità delle informazioni bisogna necessariamente utilizzare HTTPS, l’HTTP sicuro con crittografia assimentrica che ti protegge da attacchi “Man in the Middle”.<br>Ulteriore problema fu quello legato al “phishing”, dove si rischiava che l’utente potesse essere indirizzato ad una pagina di accesso fake del server richiendo di conseguenza l’input delle credenziali.</p>
+<h2 id="OAuth-2-0-Attuale"><a href="#OAuth-2-0-Attuale" class="headerlink" title="OAuth 2.0 (Attuale)"></a>OAuth 2.0 (Attuale)</h2><p>Con l’aggiornamento ad OAuth 2.0 si è aumentato il livello di affidabilità. Il principio di funzionamento è lo stesso, con i medesimi attori, ma presenta una chiara divisione di ruoli tra cui l’implementazione di un mediatore tra client e server.<br>Il mediatore ha il compito di gestire i token per l’autorizzazione per il client; il server che funge da mediatore, può essere lo stesso che ospita le risorse ai quali accedere (ad esempio, autorizzazione tramite Google e richiesta delle API Google tipo Google Maps).</p>
+<p>OAuth fornisce una soluzione di autorizzazione, non di autenticazione!<br>Consente quindi ad una applicazione di effettuare chiamate API per proprio conto o per conto di un utente, con la chiamata vincolata all’ambito di una richiesta autorizzata. Il passaggio di autenticazione in OAuth 2.0 convalida che l’utente sia autorizzato a prestare consenso per autorizzare una richiesta di accesso per una specifica risorsa. Il token di accesso è destinato esclusivamente all’accesso API e non per trasmettere informazioni sull’evento di autorizzazione. Il token, intoltre, ha una durata più lunga ed estendibile.</p>
+<h2 id="Attori-in-OAuth"><a href="#Attori-in-OAuth" class="headerlink" title="Attori in OAuth"></a>Attori in OAuth</h2><ul>
+<li><strong>Utente</strong> (Resource Owner): persona che può dare accesso ad una porzione del proprio account. La persona può garantire l’accesso alle risorse protette nel “Resource Server”</li>
+<li><strong>Resource Server</strong>: server utilizzato per accedere alle risorse protette (Tramite servizio API)</li>
+<li><strong>Client</strong>: è l’applicazione che cerca di ottenere l’accesso all’account dell’utente, e che richiede il permesso dell’utente prima di poter accedere alle risorse protette</li>
+<li><strong>Authorization Server</strong>: server ritenuto affidabile dal Resource Server che presenta l’interfaccia dove l’utente approva o nega la richiesta di accesso. Con OAuth 2.0 può corrispondere anche al Resource Server</li>
+</ul>
+<h2 id="Tokens-in-OAuth"><a href="#Tokens-in-OAuth" class="headerlink" title="Tokens in OAuth"></a>Tokens in OAuth</h2><ul>
+<li><strong>Authorization Code</strong>: codice intermedio opaco, resistituito ad un’app e utilizzato per ottenere un access token e un facoltativo refesh token. Ogni codice di autorizzazione può essere usato una sola volta!</li>
+<li><strong>Access Token</strong>: codice utilizzato dall’app per accedere all’API. Rappresenta l’autorizzazione dell’applicazione a chiamare l’API ed ha una scadenza</li>
+<li><strong>Refresh Token</strong>: codice opzionale che può essere utilizzato da un applicazione per richiedere un nuovo token di accesso quando il precedente è scaduto</li>
+</ul>
+<h2 id="Come-vengono-gestite-le-autorizzazioni"><a href="#Come-vengono-gestite-le-autorizzazioni" class="headerlink" title="Come vengono gestite le autorizzazioni ?"></a>Come vengono gestite le autorizzazioni ?</h2><p>Il protocollo OAuth definisce 4 metodi con cui le applicazione ottengono le autorizzazioni a chiamare le API. Ogni metodo usa un diverso tipo di credenziali per rappresentare l’autorizzazione: questi tipi di autorizzazioni sono chiamate “<strong>Authorization Grant</strong>“.<br>Il tipo concessione(grant) da utilizzare dipende dal caso d’uso dell’app.</p>
+<h3 id="Tipi-di-Authorization-Grant"><a href="#Tipi-di-Authorization-Grant" class="headerlink" title="Tipi di Authorization Grant:"></a>Tipi di Authorization Grant:</h3><ul>
+<li>Authorization code grant </li>
+<li>Implicit grant </li>
+<li>Resource owner password credent grant</li>
+<li>Client credential grant</li>
+</ul>
+<h2 id="Authorization-Code-Grant"><a href="#Authorization-Code-Grant" class="headerlink" title="Authorization Code Grant"></a>Authorization Code Grant</h2><p>L’Authorization Code Grant usa due tipi di richieste dall’applicazione per il server d’autorizzazione per ottenere un access token. Questo meccanismo di autorizzazione utilizza anche una chiava di prova per lo scambio chiamata “<strong>Key for Code Exchange (PKCE)</strong>“<br><a target="_blank" rel="noopener" href="https://ibb.co/2g7T7Nt"><img src="https://i.ibb.co/m6C3C8q/authgrant.jpg" alt="authgrant" border="0"></a></p>
+<ol>
+<li>All’inizio l’utente accede all’applicazione</li>
+<li>Qui avviene poi la prima richiesta: il browser dell’utente viene reindirizzato all’endpoint di autorizzazione presso l’ Authorization Server con una richiesta per autorizzare una chiamata API per conto dell’utente. </li>
+<li>Il reindirizzamento del browser abilita l’Authorization Server ad interagire con l’utente per autenticarlo e ottenere il suo consenso per la richiesta di autorizzazione.</li>
+<li>L’utente autenticandosi concede il autorizzazione per la richiesta API al server</li>
+<li>Dopo aver ottenuto l’autorizzazione, il server reindirizza il browser dell’utente all’applicazione insieme ad un codice di autorizzazione (Authorization Code)</li>
+<li>Da qui inizia una serie di importanti scambi di comunicazioni che sono nascosti all’utente, che avvengono tra applicazione e server. L’app utilizza il codice d’autorizzazione per inviare la seconda richiesta chiamata “backchannel request” all’authorization server token endpoint per ottenere l’Access Token. In più l’app riceve un ulteriore token chiamato “Refresh Token”. Questo token server per poter richiedere una nuova chiamata API saltanto i passaggi iniziali.</li>
+<li>L’app ottenendo l’Access Token lo utilizza per richiedere l’accesso al Resource Server per l’utilizzo dell’API. Avviene in fine la convalida del Resource Server insieme all’Authorization Server che e ritorna la risposta all’applicazione, che poi fornisce le informazioni sul display dell’utente</li>
+</ol>
+<p>Nel diagramma viene mostrato l’uso della <strong>chiave PKCE</strong>. PKCE può essere usato come meccanismo di authorization e token requests per garantire che l’applicazione che ha richiesto un authorizazion code è la stessa applicazione che utilizza quel codice per richiedere l’access token. <strong>In sostanza con l’uso di questa chiave si verifica anche l’autenticità dell’applicazione che userà la richiesta API</strong>.</p>
+<h3 id="PKCE-come-avviene-questa-verifica"><a href="#PKCE-come-avviene-questa-verifica" class="headerlink" title="PKCE: come avviene questa verifica?"></a>PKCE: come avviene questa verifica?</h3><p>Durante la prima richiesta, l’authorization server si fa mandare dall’applicazione questo famoso codice “Code Challenge” (creato dall’app per identificarla ed è protetto a livello crittografico); questo codice viene verificato nella fase 6 durante la richiesta dell’Access Token (lo si vede anche nel diagramma, avviene la “code verification”).</p>
+<p>Questo passaggio è importante a livello di sicurezza, soprattutto con client pubblici e app mobile, dove si potrebbero verificare degli attacchi <strong>MITM - Man In The Middle</strong> . Gli attaccanti, qualora questo controllo fosse assente, possono intercettare l’authorization code. La protezione completa dell’attacco è garantita dalla presenza dell’authorization server che effettua i controlli dei codici di Authorization Code, di Access Token siano corretti, e che sia quella l’applicazione che li abbia richiesti.</p>
+<h2 id="Gli-altri-tipi-di-autorizzazione"><a href="#Gli-altri-tipi-di-autorizzazione" class="headerlink" title="Gli altri tipi di autorizzazione"></a>Gli altri tipi di autorizzazione</h2><ul>
+<li><strong>Implicit Grant</strong> : sviluppato per essere usato per client pubblici come le applicazioni single page. L’uso di questo grant restituisce un token di accesso all’applicazione con una sola richiesta. Non supporta chiamate endpoint token di un authorization server; per compensare il problema, la concessione implicita fa in modo che il server di autorizzazione risponde ad un autorizzazione ritornandogli i token all’app in un URL frammentato e hashato. Inoltre, restituendo il token in un URL, espone il token nel browser in modo pericoloso.</li>
+<li><strong>Resource Owner Password Credential Grant</strong> : qui l’applicazione raccoglie direttamente le credenziali dell’utente invece che reindirizzare l’utente al server. L’app passa le credenziali raccolte all’authorization server per la convalida come parte della sua richiesta per ottenere l’access token. Questo metodo di grant è sconsigliato perchè espone le credenziali dell’utente direttamente all’applicazione</li>
+<li><strong>Client Credential Grant</strong> : è utilizzato quando un app chiama una richiesta API per accedere alle risorse che l’applicazione possiede. L’applicazione utilizza il client credential grant e si autentica al server di autorizzazione con le proprie credenziali per ottenere l’access token. Viene utilizzato dai client per accedere alle risorse su se stessi anzichè per accedere alle risorse di un utente</li>
+</ul>
+
   </div>
 </article>
 
@@ -183,15 +225,15 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TODO"><span class="toc-number">1.</span> <span class="toc-text">TODO</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cos%E2%80%99e-il-protocollo-OAuth-Come-Funziona"><span class="toc-number">1.</span> <span class="toc-text">Cos’è il protocollo OAuth ? Come Funziona ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OAuth-1-0"><span class="toc-number">2.</span> <span class="toc-text">OAuth 1.0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OAuth-2-0-Attuale"><span class="toc-number">3.</span> <span class="toc-text">OAuth 2.0 (Attuale)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Attori-in-OAuth"><span class="toc-number">4.</span> <span class="toc-text">Attori in OAuth</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tokens-in-OAuth"><span class="toc-number">5.</span> <span class="toc-text">Tokens in OAuth</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Come-vengono-gestite-le-autorizzazioni"><span class="toc-number">6.</span> <span class="toc-text">Come vengono gestite le autorizzazioni ?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tipi-di-Authorization-Grant"><span class="toc-number">6.1.</span> <span class="toc-text">Tipi di Authorization Grant:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Authorization-Code-Grant"><span class="toc-number">7.</span> <span class="toc-text">Authorization Code Grant</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PKCE-come-avviene-questa-verifica"><span class="toc-number">7.1.</span> <span class="toc-text">PKCE: come avviene questa verifica?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gli-altri-tipi-di-autorizzazione"><span class="toc-number">8.</span> <span class="toc-text">Gli altri tipi di autorizzazione</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://b4shm3rlow.github.io/security/oauth/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://b4shm3rlow.github.io/security/oauth/&text=How work the authorization with OAuth"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://b4shm3rlow.github.io/security/oauth/&title=How work the authorization with OAuth"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://b4shm3rlow.github.io/security/oauth/&title=How work the authorization with OAuth"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://b4shm3rlow.github.io/security/oauth/&text=How work the authorization with OAuth [ITA]"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://b4shm3rlow.github.io/security/oauth/&title=How work the authorization with OAuth [ITA]"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://b4shm3rlow.github.io/security/oauth/&title=How work the authorization with OAuth [ITA]"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

@@ -624,8 +624,6 @@ body {
   border-radius: 15px;
   background-size: 120px 120px;
   background-repeat: no-repeat;
-  filter: grayscale(100%);
-  -webkit-filter: grayscale(100%);
 }
 #header #nav {
   color: #ef233c;
@@ -666,10 +664,6 @@ body {
 }
 #header #nav ul li:last-child a {
   margin-right: 0;
-}
-#header:hover #logo {
-  filter: none;
-  -webkit-filter: none;
 }
 @media screen and (max-width: 480px) {
   #header #title {
